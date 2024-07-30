@@ -19,25 +19,25 @@ Crop Yield Data: Crop yield data was sourced from the Food and Agriculture Organ
 ## Methodology
 
 ### Data Acquisition and Storage
-⋅⋅* Weather Data: Accessed programmatically using the NCEI API, this data was stored in MongoDB. An ETL (Extract, Transform, Load) pipeline was implemented to clean the data, removing null values and irrelevant fields, and converting necessary fields to appropriate data types for analysis.
-⋅⋅* Crop Yield Data: Retrieved from FAOSTAT, the dataset focused on crop yields in California from 2003 to 2022. The data was cleaned, formatted, and stored in PostgreSQL.
+- Weather Data: Accessed programmatically using the NCEI API, this data was stored in MongoDB. An ETL (Extract, Transform, Load) pipeline was implemented to clean the data, removing null values and irrelevant fields, and converting necessary fields to appropriate data types for analysis.
+- Crop Yield Data: Retrieved from FAOSTAT, the dataset focused on crop yields in California from 2003 to 2022. The data was cleaned, formatted, and stored in PostgreSQL.
 ### Data Processing
 The project involved merging the two datasets on a common field (year), enabling a comprehensive analysis of the relationship between climate variables and crop yields.
 
 ### Analysis and Visualization
-⋅⋅* Data analysis and visualization were conducted using Python, specifically in the Jupyter Notebook environment. The Seaborn and Matplotlib libraries were used to create visualizations, including:
-⋅⋅* Scatter Plots: To explore the relationship between crop yield and average precipitation.
-⋅⋅* Histograms and Line Plots: To analyze the distribution and trends in crop yields over time.
-⋅⋅* Correlation Matrix: To identify the relationships between various climate variables (temperature, precipitation) and crop yields.
+- Data analysis and visualization were conducted using Python, specifically in the Jupyter Notebook environment. The Seaborn and Matplotlib libraries were used to create visualizations, including:
+- Scatter Plots: To explore the relationship between crop yield and average precipitation.
+- Histograms and Line Plots: To analyze the distribution and trends in crop yields over time.
+- Correlation Matrix: To identify the relationships between various climate variables (temperature, precipitation) and crop yields.
 
 ## Results
 The analysis highlighted several key findings:
-⋅⋅* Negative Correlation with Precipitation: A weak negative correlation was observed between average precipitation and crop yield, suggesting a potential threshold beyond which additional precipitation does not significantly benefit yields.
-⋅⋅* Positive Correlation with Temperature: There was a weak positive correlation between average temperature and crop yield, indicating a slight positive effect of rising temperatures on yields, although this relationship is non-linear and can be influenced by extreme weather events.
+- Negative Correlation with Precipitation: A weak negative correlation was observed between average precipitation and crop yield, suggesting a potential threshold beyond which additional precipitation does not significantly benefit yields.
+- Positive Correlation with Temperature: There was a weak positive correlation between average temperature and crop yield, indicating a slight positive effect of rising temperatures on yields, although this relationship is non-linear and can be influenced by extreme weather events.
 
 ## Technologies and Tools Used
-⋅⋅* Programming Languages: Python was the primary language used for data processing and analysis.
-⋅⋅* Databases: MongoDB was used for storing weather data, and PostgreSQL was used for crop yield data.
-⋅⋅* Data Analysis and Visualization: The analysis and visualization tasks were carried out using Jupyter Notebook, with Seaborn and Matplotlib libraries.
-⋅⋅* Data Storage and Management: Ubuntu Terminal facilitated server management, MongoDB Compass provided a graphical interface for MongoDB, and PG Admin 4 was used for managing PostgreSQL.
+- Programming Languages: Python was the primary language used for data processing and analysis.
+- Databases: MongoDB was used for storing weather data, and PostgreSQL was used for crop yield data.
+- Data Analysis and Visualization: The analysis and visualization tasks were carried out using Jupyter Notebook, with Seaborn and Matplotlib libraries.
+- Data Storage and Management: Ubuntu Terminal facilitated server management, MongoDB Compass provided a graphical interface for MongoDB, and PG Admin 4 was used for managing PostgreSQL.
 
