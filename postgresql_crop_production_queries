@@ -1,0 +1,47 @@
+
+/* selecting the distinct values from my table in order to remove dublicate rows */
+SELECT DISTINCT * FROM crop_production;
+
+/* Removing rows with NULL values */
+SELECT * FROM crop_production WHERE domain_code IS NOT NULL AND
+									domain_name IS NOT NULL AND
+									area_code IS NOT NULL AND 
+									area IS NOT NULL AND 
+									element_code IS NOT NULL AND
+									element_name IS NOT NULL AND
+									item_code IS NOT NULL AND
+									item_name IS NOT NULL AND
+									year_code IS NOT NULL AND
+									year_name IS NOT NULL AND
+									unit IS NOT NULL AND
+									value_item IS NOT NULL AND
+									flag_name IS NOT NULL AND
+									flag_description IS NOT NULL;
+
+
+/* Dropping columns that are not signifiicant in my analysis
+	domain_code, domain, area_code, area, year_name, flag_name, flag_description variables are not important
+	in my analysis, as these variables include values that are either codes and names of the same value, 
+	for example area_code value is "840" which is only representing USA, or variable "flag_name", 
+	which has only 2 values "A" and "E".
+*/
+ALTER TABLE crop_production DROP COLUMN domain_code, DROP COLUMN domain_name,
+							DROP COLUMN area, DROP COLUMN area_code,  
+							DROP COLUMN year_name, DROP COLUMN flag_name,
+							DROP COLUMN flag_description;
+
+
+/* I want to group the data by year and item name*/
+
+SELECT year_code, element_name, item_name, SUM(value_item) AS total_value
+FROM crop_production
+GROUP BY year_code, element_name, item_name
+ORDER BY year_code, element_name, item_name;
+
+/* export the table I need in csv*/
+COPY (
+  SELECT year_code, item_name, SUM(value_item) AS total_value
+  FROM crop_production
+  GROUP BY year_code, item_name
+  ORDER BY year_code, item_name
+) TO '/home/stamatis/Desktop/etled_food_data.csv' WITH CSV HEADER;

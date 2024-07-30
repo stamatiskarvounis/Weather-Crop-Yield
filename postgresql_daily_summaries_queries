@@ -1,0 +1,7 @@
+select * from daily_summaries;
+
+/* group by year only   */
+SELECT EXTRACT(YEAR FROM _date) AS year, AVG(prcp) AS avg_prcp, AVG(tavg) AS avg_tavg, MAX(tmax) AS max_tmax, MIN(tmin) AS min_tmin, AVG(temperature_difference) AS avg_temp_diff
+FROM daily_summaries
+GROUP BY EXTRACT(YEAR FROM _date)
+ORDER BY year;

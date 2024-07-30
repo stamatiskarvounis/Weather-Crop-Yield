@@ -1,0 +1,30 @@
+/* Create table for the dataset with the crop production*/
+
+CREATE TABLE crop_production (
+    domain_code varchar(50),
+    domain_name varchar(50),
+	area_code integer,
+	area varchar(100),
+	element_code integer,
+	element_name varchar(50),
+	item_code varchar(50),
+	item_name varchar(50),
+	year_code integer,
+	year_name integer,
+	unit varchar(50),
+	value_item integer,
+	flag_name varchar(50),
+	flag_description varchar(50)
+);
+
+
+/* Create table for the dataset with the daily summaries*/
+CREATE TABLE daily_summaries (
+    _id varchar(50),
+    _date DATE,
+	prcp float,
+	tavg float,
+	tmax float,
+	tmin float,
+	temperature_difference float
+);

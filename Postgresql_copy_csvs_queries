@@ -1,0 +1,5 @@
+COPY crop_production (domain_code, domain_name, area_code, area, element_code, element_name, item_code, item_name, year_code, year_name, unit, value_item, flag_name, flag_description) FROM '/home/stamatis/Desktop/Food_Data.csv' DELIMITER ',' CSV HEADER;
+
+
+
+COPY daily_summaries (_id, _date, prcp, tavg, tmax, tmin, temperature_difference) FROM '/home/stamatis/Desktop/ETLed_CA2_Database_Programming_collection.csv' DELIMITER ',' CSV HEADER;

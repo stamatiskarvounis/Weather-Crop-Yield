@@ -1,0 +1,84 @@
+from pymongo import MongoClient
+
+# Requires the PyMongo package.
+# https://api.mongodb.com/python/current
+
+client = MongoClient('mongodb://localhost:27017/')
+result = client['CA2_Database_Programming']['CA2_Database_Programming_collection'].aggregate([
+    {
+        '$match': {
+            'LATITUDE': {
+                '$ne': ''
+            }, 
+            'LONGITUDE': {
+                '$ne': ''
+            }, 
+            'DATE': {
+                '$ne': ''
+            }, 
+            'PRCP': {
+                '$ne': ''
+            }, 
+            'TAVG': {
+                '$ne': ''
+            }, 
+            'TMAX': {
+                '$ne': ''
+            }, 
+            'TMIN': {
+                '$ne': ''
+            }
+        }
+    }, {
+        '$project': {
+            'DATE': 1, 
+            'PRCP': 1, 
+            'TAVG': 1, 
+            'TMAX': 1, 
+            'TMIN': 1
+        }
+    }, {
+        '$project': {
+            'DATE': 1, 
+            'PRCP': 1, 
+            'TAVG': 1, 
+            'TMAX': 1, 
+            'TMIN': 1, 
+            'TAVG': {
+                '$toDouble': '$TAVG'
+            }, 
+            'TMAX': {
+                '$toDouble': '$TMAX'
+            }, 
+            'PRCP': {
+                '$toDouble': '$PRCP'
+            }, 
+            'TMIN': {
+                '$toDouble': '$TMIN'
+            }, 
+            'DATE': {
+                '$dateFromString': {
+                    'dateString': '$DATE', 
+                    'format': '%Y-%m-%d'
+                }
+            }
+        }
+    }, {
+        '$project': {
+            'DATE': 1, 
+            'PRCP': 1, 
+            'TAVG': 1, 
+            'TMAX': {
+                '$toDouble': '$TMAX'
+            }, 
+            'TMIN': {
+                '$toDouble': '$TMIN'
+            }, 
+            'temperatureDifference': {
+                '$subtract': [
+                    '$TMAX', '$TMIN'
+                ]
+            }
+        }
+    }
+])
